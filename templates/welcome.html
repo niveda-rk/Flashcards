@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+Welcome!
+{% endblock %}
+
+{% block content %}
+    <h1>Welcome to my page</h1>
+    <p>
+        This is a demo application
+        <em>Getting started with Flask</em>
+        on <a href="https://www.pluralsight.com">Pluralsight</a>
+    </p>
+    <h2>Flash cards</h2>
+    <ul>
+        {% for card in cards %}
+        <li>
+            <a href="{{url_for('card_view', index=loop.index0)}}">   <!-- loop.index0 gives us how many times the for loop has run until now(0 based) -->
+                 <!-- loop.index starts from 1 and not from 0 -->
+                {{card.question}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
